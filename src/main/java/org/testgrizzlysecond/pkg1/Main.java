@@ -11,7 +11,10 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World");
         org.glassfish.jersey.server.ResourceConfig rc = new ResourceConfig();
-        rc.registerClasses(org.testgrizzlysecond.pkg1.DummyController.class);
+        rc.registerClasses(DummyController.class);
+        //rc.register(JacksonFeature.class);
+//        rc.property("jersey.config.server.tracing.type", "ALL");
+//        rc.property("jersey.config.server.tracing.threshold", "VERBOSE");
         URI uri = URI.create("http://localhost");
         HttpServer webServer = GrizzlyHttpServerFactory.createHttpServer(uri, rc, false);
         System.out.println("Server Created");
