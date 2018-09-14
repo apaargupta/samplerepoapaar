@@ -10,6 +10,6 @@ public class DummyController {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String get() {
-        return "Got it! Swag hai bhai ka!!!";
+        return "Got it! Swag hai bhai ka!";
     }
 }
