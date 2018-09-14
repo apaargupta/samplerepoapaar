@@ -1,26 +1,23 @@
-pipeline {
-    agent any
-    stages {
-    def mvnHome
-        stage('Build') {
-            steps {
-                //
-                mvnHome = tool 'MVN'
-                withMaven(maven : 'MVN') {
-                    // sh 'mvn '
-                    bat(/"${mvnHome}\bin\mvn" clean install/)
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                //
-            }
-        }
-        stage('Deploy') {
-            steps {
-                //
-            }
-        }
-    }
+node {
+   def mvnHome
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/apaargupta/samplerepoapaar.git'
+      // Get the Maven tool.
+      // ** NOTE: This 'M3' Maven tool must be configured
+      // **       in the global configuration.
+      mvnHome = tool 'MVN'
+   }
+   stage('Build') {
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
+   }
+   stage('Results') {
+      //junit '**/target/surefire-reports/TEST-*.xml'
+      //archive 'target/*.jar'
+   }
 }
