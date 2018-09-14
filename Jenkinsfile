@@ -19,10 +19,6 @@ node {
    stage('Deploy') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       //archive 'target/*.jar'
-      if (isUnix()) {
-               sh "'${mvnHome}/bin/mvn' deploy"
-            } else {
-               bat(/"${mvnHome}\bin\mvn" deploy/)
-            }
+      sh "scp -r -i /C/Users/apaagupt/Downloads/sampleKeyPair.pem target/  ec2-user@ec2-18-223-134-239.us-east-2.compute.amazonaws.com:/home/ec2-user"
    }
 }
