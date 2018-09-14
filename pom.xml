@@ -8,6 +8,14 @@
     <artifactId>TestGrizzlySecond</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <distributionManagement>
+        <repository>
+            <id>ssh-aws</id>
+            <url>scpexe://ec2-18-223-134-239.us-east-2.compute.amazonaws.com</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.glassfish.grizzly/grizzly-http-server -->
         <dependency>
@@ -35,6 +43,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.glassfish.grizzly</groupId>
             <artifactId>grizzly-framework</artifactId>
@@ -81,6 +104,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
     </dependencies>
 
 
@@ -119,8 +143,20 @@
                 </execution>
             </executions>
 </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>8</source>
+                <target>8</target>
+            </configuration>
+        </plugin>
+
 
     </plugins>
+
+
+
 </build>
 
 </project>

@@ -7,6 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -15,13 +16,14 @@ public class Main {
         //rc.register(JacksonFeature.class);
 //        rc.property("jersey.config.server.tracing.type", "ALL");
 //        rc.property("jersey.config.server.tracing.threshold", "VERBOSE");
-        URI uri = URI.create("http://localhost");
+        URI uri = URI.create("http://0.0.0.0:80");
         HttpServer webServer = GrizzlyHttpServerFactory.createHttpServer(uri, rc, false);
         System.out.println("Server Created");
         try {
             webServer.start();
             System.out.println("Server Started");
         } catch (IOException e) {
+            System.out.printf("Failed in exception" + e.getStackTrace());
         }
     }
 }
