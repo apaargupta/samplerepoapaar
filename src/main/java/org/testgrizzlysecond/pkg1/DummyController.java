@@ -28,8 +28,8 @@ public class DummyController {
 //        stringBuilder.replace(stringBuilder.lastIndexOf(","), stringBuilder.lastIndexOf(",")+1, "");
 //        stringBuilder.append("]");
         JSONArray jsonArray = new JSONArray();
-        return anotherMethod().forEach((JSONObject) jsonObj -> jsonArray).toString();
-        //return "Got it! Swag hai bhai ka!";
+        //return anotherMethod().forEach((JSONObject) jsonObj -> jsonArray).toString();
+        return "Got it! Swag hai bhai ka!";
     }
 
     private  JSONArray anotherMethod() {
