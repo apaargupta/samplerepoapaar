@@ -19,6 +19,7 @@ node {
    stage('Deploy') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       //archive 'target/*.jar'
-      sh "scp -i /C/Users/apaagupt/Downloads/sampleKeyPair.pem -r target/  ec2-user@ec2-18-223-134-239.us-east-2.compute.amazonaws.com:/home/ec2-user"
+      //sh "scp -i /C/Users/apaagupt/Downloads/sampleKeyPair.pem -r target/  ec2-user@ec2-18-223-134-239.us-east-2.compute.amazonaws.com:/home/ec2-user"
+	  bat(/"C:\Program Files (x86)\PuTTY\pscp" -i "C:\Users\apaagupt\Downloads\samplePrivKey.ppk" -r target\ ec2-user@ec2-18-223-134-239.us-east-2.compute.amazonaws.com:/home/ec2-user/)
    }
 }
