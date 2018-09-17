@@ -10,3 +10,4 @@ MANIFEST.MF
 *.jar
 RemoteSystemsTempFiles
 bin
+nppBackup/
